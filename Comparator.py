@@ -94,7 +94,7 @@ plt.plot_date(deltax2, object2, "g-" , linewidth=2, markersize=1, label=f"{set2N
 plt.legend(loc="upper left")
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
-plt.savefig(f"{dest}\{outName}.png", dpi=400)
+plt.savefig(f"{dest}{outName}.png", dpi=400)
 
 # I just have this off for right now since its really big on the screen in order to get a good image saved
 # function to show the plot 
