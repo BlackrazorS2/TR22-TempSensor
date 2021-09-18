@@ -2,7 +2,7 @@ import csv
 import matplotlib
 import matplotlib.pyplot as plt
 
-with open('DemoDataSet.csv','r') as f_input:
+with open('DemoData\DemoDataSet.csv','r') as f_input:
     csv_input = csv.reader(f_input, delimiter=',', skipinitialspace=True)
     x_times = []
     ambientF = []
@@ -19,6 +19,7 @@ with open('DemoDataSet.csv','r') as f_input:
         ambientC.append(float(cols[3]))
         objectC.append(float(cols[4]))
 
+plt.figure(figsize=(15,9), dpi=400)
 # naming the x axis 
 plt.xlabel('Real-Time') 
 # naming the y axis 
@@ -26,15 +27,19 @@ plt.ylabel('Brake Temp')
 # giving a title to my graph 
 plt.title('Brake Temp vs Time')
 # plotting the points 
-plt.plot_date(x_times, ambientF, "b-" , linewidth=2, markersize=1)
+plt.plot_date(x_times, ambientF, "b-" , linewidth=2, markersize=1, label="Ambient Temp (*F)")
 
-plt.plot_date(x_times, objectF, "r-" , linewidth=2, markersize=1)
+plt.plot_date(x_times, objectF, "r-" , linewidth=2, markersize=1, label="Target Temp (*F)")
 
-plt.plot_date(x_times, ambientC, "k-" , linewidth=2, markersize=1)
+plt.plot_date(x_times, ambientC, "k-" , linewidth=2, markersize=1, label="Ambient Temp (*C)")
 
-plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1)
+plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1, label="Target Temp (*C)")
+# adding the legend
+plt.legend(loc="upper left")
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
-plt.savefig("DemoDataSet.png")
+plt.savefig("DemoData\DemoDataSet.png", dpi=400)
+
+# I just have this off for right now since its really big on the screen in order to get a good image saved
 # function to show the plot 
-plt.show()
+#plt.show()
