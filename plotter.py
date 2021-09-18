@@ -2,7 +2,13 @@ import csv
 import matplotlib
 import matplotlib.pyplot as plt
 
-with open('DemoData\DemoDataSet.csv','r') as f_input:
+dataSet = input("What is the file path of the dataset you want to plot?: ")
+output_loc = input("Where do you want the graph to be saved to?(you can just press enter for here): ")
+name = input("What do you want the file to be named?: ")
+if name.strip() == "": # if the name is just a bunch of spaces or something
+    name = "PlotterOut"
+
+with open(dataSet,'r') as f_input:
     csv_input = csv.reader(f_input, delimiter=',', skipinitialspace=True)
     x_times = []
     ambientF = []
@@ -38,7 +44,7 @@ plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1, label="Target 
 plt.legend(loc="upper left")
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
-plt.savefig("DemoData\DemoDataSet.png", dpi=400)
+plt.savefig(f"{output_loc}\{name}.png", dpi=400)
 
 # I just have this off for right now since its really big on the screen in order to get a good image saved
 # function to show the plot 
