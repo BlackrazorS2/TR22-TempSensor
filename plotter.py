@@ -44,7 +44,7 @@ plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1, label="Target 
 plt.legend(loc="upper left")
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
-plt.savefig(f"{output_loc}\{name}.png", dpi=400)
+plt.savefig(f"{output_loc}{name}.png", dpi=400)
 
 # I just have this off for right now since its really big on the screen in order to get a good image saved
 # function to show the plot 
