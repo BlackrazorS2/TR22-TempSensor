@@ -25,7 +25,7 @@ All the files were written in python 3.7.2 but should be compatible with any pyt
     - If for whatever reason you want to use a python version before 3.6, replace all instances of f strings `f"{blah} words"` with the old string
     formatting `"{0} words".format(blah)`. I also cannot guarantee the stability of the other packages in older verisons.
 
-**__SerialReader__** handles the data collection from the arduino be reading the output in a given serial port(usb).
+__**SerialReader**__ handles the data collection from the arduino be reading the output in a given serial port(usb).
 Future implementations will likely need to be able to parse from a wireless connection - which if simple radios are used,
 won't change how this program works at all
 
@@ -35,9 +35,9 @@ The output of `SerialReader` is a csv file as follows:
 | :-------------------------- | :-----------------------: | :----------------------: | :-----------------------: | -----------------------: |
 | Hours:Minutes:Seconds       |  Ambient Temp in F        |  Object Temp in F        |  Ambient Temp in C        |  Object Temp in C        |
 
-**__plotter__** takes a csv file in the format output by `SerialReader` and uses matplotlib to create a graph of the data, saving it to whatever
+__**plotter**__ takes a csv file in the format output by `SerialReader` and uses matplotlib to create a graph of the data, saving it to whatever
 location you want
 
-**__Comparator__** takes two csv files in the format output by `SerialReader` and uses matplotlib to graph both sets of data against one another
+__**Comparator**__ takes two csv files in the format output by `SerialReader` and uses matplotlib to graph both sets of data against one another
 in either degrees Celcius or degrees Fahrenheit. Just like `plotter`, `Comparator` takes the plot and saves it as an image wherever you want
 so you can reference it in the future
