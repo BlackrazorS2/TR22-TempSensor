@@ -19,23 +19,33 @@
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
 
+boolean loud = false;
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("CLEARDATA"); //clears up any data from other programs
-  Serial.println("Adafruit MLX90614 test");  
+  //Serial.println("CLEARDATA"); //clears up any data from other programs
+  //Serial.println("Adafruit MLX90614 test");  
 
   mlx.begin();  
 }
 
 void loop() {
-
-  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
-  Serial.print("*C\tObject = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
+  
+  if (loud) { //if you want the output to look prettier
+    
   Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempF()); 
   Serial.print("*F\tObject = "); Serial.print(mlx.readObjectTempF()); Serial.println("*F");
+  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
+  Serial.print("*C\tObject = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
 
-  Serial.println();
+  } else { // raw output with a delimiter for easier data gathering
+  Serial.print(mlx.readAmbientTempF()); Serial.print(";"); 
+  Serial.print(mlx.readObjectTempF()); Serial.print(";");
+  Serial.print(mlx.readAmbientTempC()); Serial.print(";");
+  Serial.print(mlx.readObjectTempC()); Serial.print(";");
+  }
+  
+  //Serial.println();
   delay(500);
 }
