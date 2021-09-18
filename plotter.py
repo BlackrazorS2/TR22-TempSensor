@@ -35,5 +35,6 @@ plt.plot_date(x_times, ambientC, "k-" , linewidth=2, markersize=1)
 plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1)
 # beautify the x-labels
 plt.gcf().autofmt_xdate()
+plt.savefig("DemoDataSet.png")
 # function to show the plot 
 plt.show()
