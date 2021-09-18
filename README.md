@@ -31,7 +31,7 @@ won't change how this program works at all
 
 The output of `SerialReader` is a csv file as follows:
 
-| Current Time (Date of Test) | Ambient Temperature (\*F) | Object Temperature (\*F) | Ambient Temperature (\*C) | Object Temperature (\*F) |
+| Current Time (Date of Test) | Ambient Temperature (\*F) | Object Temperature (\*F) | Ambient Temperature (\*C) | Object Temperature (\*C) |
 | :-------------------------- | :-----------------------: | :----------------------: | :-----------------------: | -----------------------: |
 | Hours:Minutes:Seconds       |  Ambient Temp in F        |  Object Temp in F        |  Ambient Temp in C        |  Object Temp in C        |
 
