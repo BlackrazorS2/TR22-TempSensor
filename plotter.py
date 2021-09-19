@@ -11,6 +11,7 @@ if name.strip() == "": # if the name is just a bunch of spaces or something
 with open(dataSet,'r') as f_input:
     csv_input = csv.reader(f_input, delimiter=',', skipinitialspace=True)
     x_times = []
+    deltax = []
     ambientF = []
     objectF = []
     ambientC = []
@@ -24,22 +25,27 @@ with open(dataSet,'r') as f_input:
         objectF.append(float(cols[2]))
         ambientC.append(float(cols[3]))
         objectC.append(float(cols[4]))
-
+    for i, x in enumerate(x_times):
+        if i == 0:
+            deltax.append(0)
+        else:
+            changex = x-x_times[0]
+            deltax.append(changex)
 plt.figure(figsize=(15,9), dpi=400)
 # naming the x axis 
-plt.xlabel('Real-Time') 
+plt.xlabel('Time Since Start (H:M:S)') 
 # naming the y axis 
 plt.ylabel('Brake Temp') 
 # giving a title to my graph 
 plt.title('Brake Temp vs Time')
 # plotting the points 
-plt.plot_date(x_times, ambientF, "b-" , linewidth=2, markersize=1, label="Ambient Temp (*F)")
+plt.plot_date(deltax, ambientF, "b-" , linewidth=2, markersize=1, label="Ambient Temp (*F)")
 
-plt.plot_date(x_times, objectF, "r-" , linewidth=2, markersize=1, label="Target Temp (*F)")
+plt.plot_date(deltax, objectF, "r-" , linewidth=2, markersize=1, label="Target Temp (*F)")
 
-plt.plot_date(x_times, ambientC, "k-" , linewidth=2, markersize=1, label="Ambient Temp (*C)")
+plt.plot_date(deltax, ambientC, "k-" , linewidth=2, markersize=1, label="Ambient Temp (*C)")
 
-plt.plot_date(x_times, objectC, "g-" , linewidth=2, markersize=1, label="Target Temp (*C)")
+plt.plot_date(deltax, objectC, "g-" , linewidth=2, markersize=1, label="Target Temp (*C)")
 # adding the legend
 plt.legend(loc="upper left")
 # beautify the x-labels
