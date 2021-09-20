@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 dataSet = input("What is the file path of the dataset you want to plot?: ")
 output_loc = input("Where do you want the graph to be saved to?(you can just press enter for here): ")
+# This just makes sure that the path stuff works out if people forget a \ at the end
+if output_loc.strip() != "" and output_loc[-1] != "\\":
+    output_loc += "\\"
 name = input("What do you want the file to be named?: ")
 if name.strip() == "": # if the name is just a bunch of spaces or something
     name = "PlotterOut"

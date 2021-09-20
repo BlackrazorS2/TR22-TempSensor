@@ -11,6 +11,9 @@ print("\n")
 dataSet2 = input("Please enter the path of your second set of data: ")
 set2Name = input("What would you like to call this dataset?: ")
 dest = input("Where would you like the graph to be saved to?: ")
+# This just makes sure that the path stuff works out if people forget a \ at the end
+if dest.strip() != "" and dest[-1] != "\\":
+    dest += "\\"
 outName = input("What do you want the graph to be called?: ")
 if outName.strip() == "": # if the name is just spaces or something
     outName == "ComparatorOut"
