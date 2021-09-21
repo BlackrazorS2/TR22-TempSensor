@@ -7,6 +7,7 @@ import serial
 from os.path import exists
 import datetime as dt
 from datetime import datetime
+import sys
 
 source = input("Are we reading from serial or from an SD card?[s/c] ").lower()
 while True:
@@ -70,6 +71,9 @@ def main():
             except:
                 print("Collected partial data, skipping...")
                 continue
+
+def exit():
+    sys.exit()
 
 if __name__ == "__main__":
     main()
