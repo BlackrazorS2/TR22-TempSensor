@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import filedialog as fd
 import SerialReader
 import plotter
+import Comparator
 
 # Initialize Tkinter
 root = Tk()
@@ -126,18 +127,67 @@ plot_startButton.grid(column=1, row=5, sticky="W")
 ############# Tab 3 #################
 
 # Initialize Labels
+compare_select1Label = ttk.Label(tab3, text="Select first data file")
+compare_select1Label.grid(column=0, row=0, sticky="W")
+compare_select2Label = ttk.Label(tab3, text="Select second data file")
+compare_select2Label.grid(column=0, row=2, sticky="W")
+compare_unitLabel = ttk.Label(tab3, text="Select Unit")
+compare_unitLabel.grid(column=3, row=0, sticky="W")
+compare_nameAx1Label = ttk.Label(tab3, text="Name axis for first file")
+compare_nameAx1Label.grid(column=0, row=4, sticky="W")
+compare_nameAx2Label = ttk.Label(tab3, text="Name axis for second file")
+compare_nameAx2Label.grid(column=0, row=6, sticky="W")
+compare_pathLabel = ttk.Label(tab3, text="Select output folder")
+compare_pathLabel.grid(column=0, row=8, sticky="W")
+compare_nameLabel = ttk.Label(tab3, text="Enter file name")
+compare_nameLabel.grid(column=0, row=10, sticky="W")
+compare_statusLabel = ttk.Label(tab3, text="Idle")
+compare_statusLabel.grid(column=2, row=11, sticky="W")
 
 # Initialize File selections
+file1 = StringVar()
+file2 = StringVar()
+compare_file1Entry = ttk.Entry(tab3, textvariable=file1)
+compare_file1Entry.grid(column=0, row=1, sticky="W")
+compare_file1Browse = ttk.Button(tab3, text="Browse", command=lambda: browseFile(compare_file1Entry))
+compare_file1Browse.grid(column=1, row=1, sticky="W")
+compare_file2Entry = ttk.Entry(tab3, textvariable=file2)
+compare_file2Entry.grid(column=0, row=3, sticky="W")
+compare_file2Browse = ttk.Button(tab3, text="Browse", command=lambda: browseFile(compare_file2Entry))
+compare_file2Browse.grid(column=1, row=3, sticky="W")
 
 # Initialize Unit selection
+Unit = StringVar()
+compare_celciusRadio = ttk.Radiobutton(tab3, text="Celcius", variable=Unit, value="C")
+compare_celciusRadio.grid(column=3, row=1, sticky="W")
+compare_fareRadio = ttk.Radiobutton(tab3, text="Fahrenheit", variable=Unit, value="F")
+compare_fareRadio.grid(column=3, row=2, sticky="W")
 
 # Initialize Axis selection
+axis1Name = StringVar()
+axis2Name = StringVar()
+compare_nameAx1Entry = ttk.Entry(tab3, textvariable=axis1Name)
+compare_nameAx1Entry.grid(column=0, row=5, sticky="W")
+compare_nameAx2Entry = ttk.Entry(tab3, textvariable=axis2Name)
+compare_nameAx2Entry.grid(column=0, row=7, sticky="W")
 
 # Initialize Output path
+compare_outPath = StringVar()
+compare_outPathEntry = ttk.Entry(tab3, textvariable=compare_outPath)
+compare_outPathEntry.grid(column=0, row=9, sticky="W")
+compare_dirBrowse = ttk.Button(tab3, text="Browse", command=lambda: browseDir(compare_outPathEntry))
+compare_dirBrowse.grid(column=1, row=9, sticky="W")
 
 # Initialize Output name
+compare_outName = StringVar()
+compare_outNameEntry = ttk.Entry(tab3, textvariable=compare_outName)
+compare_outNameEntry.grid(column=0, row=11, sticky="W")
 
 # Initialize Start button
+compare_startButton = ttk.Button(tab3, text="Start", command=lambda: Comparator.compare(Unit.get(), file1.get(), file2.get(),\
+                                                                    axis1Name.get(), axis2Name.get(), compare_outPath.get(), compare_outName.get()))#, state="disabled")
+compare_startButton.grid(column=1, row=11, sticky="W")
+
 
 ########## End of Tab 3 #############
 
