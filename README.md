@@ -25,9 +25,9 @@ All the files were written in python 3.8.5 but should be compatible with any pyt
     - If for whatever reason you want to use a python version before 3.6, replace all instances of f strings `f"{blah} words"` with the old string
     formatting `"{0} words".format(blah)`. I also cannot guarantee the stability of the other packages in older verisons.
 
-__**SerialReader**__ handles the data collection from the arduino be reading the output in a given serial port(usb).
-Future implementations will likely need to be able to parse from a wireless connection - which if simple radios are used,
-won't change how this program works at all
+__**SerialReader**__ handles the data collection from the arduino be reading the output in a given serial port(usb) or from a given text file
+with the format of `time|AmbientF;ObjectF;AmbientC;ObjectC;`. Note that while `TempSensor` lists functionality over IP, this is not yet 
+implemented and will not yield any output.
 
 The output of `SerialReader` is a csv file as follows:
 
@@ -46,4 +46,6 @@ __**TempSensor**__ is the GUI head for all the other programs. It contains multi
 for processing temperature data. For all fields that involve selecting files, either the file path can be typed in or the browse buttons can be
 used to open a standard file explorer dialog box. Please ensure that all required fields are entered prior to selecting the start button; the 
 program shouldn't (tm) hang, and you should be able to just correct the mistake and try again, but no output will be recieved if input was done
-incorrectly. Error tracking is currently in development.
+incorrectly. 
+- Error tracking is currently in development.
+- Note that on the `Read` tab there is a radiobutton for reading from IP. This button is currently not functional and will **NOT** do anything.
