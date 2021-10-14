@@ -20,8 +20,8 @@ Python handles all the data collection from the arduino and post processing.
 
 ## Files
 
-There are currently 3 python files: `SerialReader`, `plotter`, and `Comparator`
-All the files were written in python 3.7.2 but should be compatible with any python version above 3.6
+There are currently 4 python files: `TempSensor`, `SerialReader`, `plotter`, and `Comparator`
+All the files were written in python 3.8.5 but should be compatible with any python version above 3.6
     - If for whatever reason you want to use a python version before 3.6, replace all instances of f strings `f"{blah} words"` with the old string
     formatting `"{0} words".format(blah)`. I also cannot guarantee the stability of the other packages in older verisons.
 
@@ -41,3 +41,9 @@ location you want
 __**Comparator**__ takes two csv files in the format output by `SerialReader` and uses matplotlib to graph both sets of data against one another
 in either degrees Celcius or degrees Fahrenheit. Just like `plotter`, `Comparator` takes the plot and saves it as an image wherever you want
 so you can reference it in the future
+
+__**TempSensor**__ is the GUI head for all the other programs. It contains multiple tabs, which each control one of the three other programs
+for processing temperature data. For all fields that involve selecting files, either the file path can be typed in or the browse buttons can be
+used to open a standard file explorer dialog box. Please ensure that all required fields are entered prior to selecting the start button; the 
+program shouldn't (tm) hang, and you should be able to just correct the mistake and try again, but no output will be recieved if input was done
+incorrectly. Error tracking is currently in development.
